@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dump1090
+  labels:
+    name: dump1090
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    name: dump1090

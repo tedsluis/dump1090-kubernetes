@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dump1090
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: dump1090
+    spec:
+      containers:
+      - name: dump1090
+        image: tedsluis/dump1090-mutability:v1.15
+        ports:
+        - containerPort: 80

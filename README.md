@@ -1,32 +1,81 @@
 # dump1090-kubernetes
 Demo: Run dump1090-mutability on a Kubernetes cluster.  
-   
-Try it on Google Cloud: https://cloud.google.com   boe
-
+    
 * Create a single pod with a dump1090 instance.
 * Create a replication controller with multiple dump1090 instances.
 * Create a deployment of multiple dump1090 instances.
 * Create a load balancer service for multiple dump1090 instances with an external IP address.
 * Scale up and scale down dump1090 instances.
 * Do a rolling update to a new version of dump190.
-* Roll back to a previous version.
+* Roll back to a previous version.   
+   
+If you don't like to set up a Kubernetes cluster yourself, you can use a free trail on Google Cloud: https://cloud.google.com  
+All you need is 10 minutes to signup, add credit card details, create a container cluster before you can start.   
+After the free trail period your access to the cluster automaticly ends without any payment.  
+Start with: http://kubernetes.io/docs/getting-started-guides/gce/   
    
 ### Download yaml files   
    
 Download the yaml files to you Kubernetes cluster management host where you can run kubectl.
-
-* wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-pod.yaml
-* wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-replication-controller.yaml
-* wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-deployment-v1.yaml
-* wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-deployment-v2.yaml
-* wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-services.yaml   
+    
+````
+wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-pod.yaml
+wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-replication-controller.yaml
+wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-deployment-v1.yaml
+wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-deployment-v2.yaml
+wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-services.yaml   
+````
+   
+Or clone the repo:   
+    
+````
+git clone https://github.com/tedsluis/dump1090-kubernetes.git    
+````
    
 ### Create a single pod   
    
 ````
 kubectl create -f dump1090-pod.yaml    
 ````
-
+   
+````
+kubectl get pods
+````
+   
+### Create service with external IP address for dump1090   
+   
+This services creates a load balancer for the dump1090 web server(s). It also provides a external IP address.
+   
+````
+kubectl create -f dump1090-services.yaml   
+````
+note: It will take a minut before you get an external IP address!   
+   
+Check the service:   
+   
+````
+kubectl get services
+````
+    
+````
+kubectl describe services dump1090
+````
+   
+### Try dump1090 in you browser   
+   
+Check dump1090 in you browser. You may need to refresh you browser a view times!   
+   
+````
+http://external_ip_address_of_service/dump1090   
+````
+   
+### Delete the pod 
+   
+````
+kubectl delete pods dump1090
+````
+note: We leave the service with the external IP address as it is for the next examples.   
+   
 ### Create replication controller   
    
 ````
@@ -34,11 +83,23 @@ kubectl create -f dump1090-replication-controller.yaml
 ````
    
 ````
-kubectl scale --replicas=4 rc dump1090
+kubectl scale --replicas=5 rc dump1090
 ````
     
 ````
 kubectl get pods --show-labels
+````
+   
+Check dump1090 in you browser. You may need to refresh you browser a view times!
+
+````
+http://external_ip_address_of_service/dump1090
+````
+   
+### Remove the replication controller
+   
+````
+kubectl delete rc dump1090
 ````
    
 ### Deploy dump1090-mutability, version 1   
@@ -62,32 +123,11 @@ kubectl get deployments
 ````
 kubectl describe deployments   
 ````
-   
-### Create service with external IP address for dump1090   
-   
-This services creates a load balancer for the dump1090 web servers. It also provides a external IP address.
-   
-````
-kubectl create -f dump1090-services.yaml   
-````
-note: It will take a minut before you get an external IP address!   
-   
-Check the service:   
-   
-````
-kubectl get services
-````
     
-````
-kubectl describe services dump1090
-````
-   
-### Try dump1090 in you browser   
-   
-Check dump1090 in you browser. You may need to refresh you browser a view times!   
+Check dump1090 in you browser. You may need to refresh you browser a view times!
    
 ````
-http://external_ip_address_of_service/dump1090   
+http://external_ip_address_of_service/dump1090
 ````
    
 ### Rolling update: deploy dump1090-mutability version 2   

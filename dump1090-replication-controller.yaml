@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: dump1090
+  labels:
+    name: dump1090
+spec:
+  replicas: 3
+  selector:
+    name: dump1090
+  template:
+    metadata:
+      labels:
+        name: dump1090
+    spec:
+      containers:
+      - name: dump190
+        image: tedsluis/dump1090-mutability:v1.15
+        ports:
+        - containerPort: 80

@@ -1,6 +1,8 @@
 # dump1090-kubernetes
 Demo: Run dump1090-mutability on a Kubernetes cluster.  
 
+* Create a single pod with a dump1090 instance.
+* Create a replication controller with multiple dump1090 instances.
 * Create a deployment of multiple dump1090 instances.
 * Create a load balancer service for multiple dump1090 instances with an external IP address.
 * Scale up and scale down dump1090 instances.
@@ -11,10 +13,24 @@ Demo: Run dump1090-mutability on a Kubernetes cluster.
    
 Download the yaml files to you Kubernetes cluster management host where you can run kubectl.
 
+* wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-pod.yaml
+* wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-replication-controller.yaml
 * wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-deployment-v1.yaml
 * wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-deployment-v2.yaml
 * wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-services.yaml   
    
+### Create a single pod   
+   
+````
+kubectl create -f dump1090-pod.yaml    
+````
+
+### Create replication controller   
+   
+````
+kubectl create -f dump1090-replication-controller.yaml
+````
+    
 ### Deploy dump1090-mutability, version 1   
    
 This deployment starts 3 pods with dump1090.

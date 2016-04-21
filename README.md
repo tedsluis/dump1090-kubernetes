@@ -32,7 +32,15 @@ kubectl create -f dump1090-pod.yaml
 ````
 kubectl create -f dump1090-replication-controller.yaml
 ````
+   
+````
+kubectl scale --replicas=4 rc dump1090
+````
     
+````
+kubectl get pods --show-labels
+````
+   
 ### Deploy dump1090-mutability, version 1   
    
 This deployment starts 3 pods with dump1090.

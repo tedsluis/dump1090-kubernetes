@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dump1090
+  labels:
+    name: dump1090
+spec:
+  containers:
+    - name: dump1090
+      image: tedsluis/dump1090-mutability:v1.15_heatmaprangeview
+      ports:
+        - containerPort: 80
+

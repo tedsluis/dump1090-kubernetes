@@ -30,6 +30,7 @@ Or clone the repo:
     
 ````
 git clone https://github.com/tedsluis/dump1090-kubernetes.git    
+cd dump1090-kubernetes   
 ````
    
 ### Create a single pod   

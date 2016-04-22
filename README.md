@@ -50,7 +50,7 @@ cd dump1090-kubernetes
    
 ### Create a single pod   
    
-Prove that there are no running pods:   
+Proof that there are no running pods:   
 ````
 kubectl get pods   
 ````   
@@ -114,7 +114,8 @@ kubectl describe services dump1090
    
 ### Try dump1090 in your browser   
    
-Check dump1090 in your browser. You may need to refresh your browser a view times!   
+Check dump1090 in your browser. Use the 'EXTERNAL IP' that was displayed by the 'kubectl get service' command.    
+You may need to refresh your browser a view times!   
 ````
 http://external_ip_address_of_service/dump1090   
 ````
@@ -136,6 +137,7 @@ List pods:
 kubectl get pods
 ````
 [![get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods3.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods3.png)   
+Our pod has been terminated.   
    
 ### Create replication controller   
    
@@ -158,23 +160,23 @@ kubectl scale --replicas=5 rc dump1090
 [![kubectl scale --replicas=5 rc dump1090](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/scale_rc1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/scale_rc1.png)   
 You can scale down the number of pods in the same way.  
    
-Get the replication controller:   
+List the replication controller:   
 ````
 kubectl get rc
 ````
 [![kubectl get rc](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_rc1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_rc1.png)   
-Are are 5 pods running!   
+There are 5 pods running!   
    
 Every pod has the dump1090 label:   
 ````
-kubectl get pods --show-labels
+kubectl get pods --selector=name=dump1090
 ````
 [![kubectl get pods --show-labels](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods5.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods5.png)  
 
-This 'dump1090' label is used by the load balancer to identify pods. That label was attached to the pods and service in the yaml configuration files.   
-Note that the dump1090 service is still active.  
+This 'dump1090' label is used by the load balancer to identify the dump1090 pods. That label was attached to the pods and service in the yaml configuration files.   
+Note that the 'dump1090' service is still active.  
 All pods are accessable using the external IP address (port 80) dune to the label 'dump1090'.   
-The services balances the load over the pods:   
+The service will balances the load over the pods:   
 ````
 kubectl get services
 ````
@@ -207,7 +209,7 @@ This deployment starts 3 pods with dump1090.
 kubectl create -f dump1090-deployment-v1.yaml   
 ````
 [![kubectl create -f dump1090-deployment-v1.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_deployment1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_deployment1.png)  
-Note: 'Deployment' is still in beta at the time I am testing this. You may get an error. You may need to change the API version within the yaml file. Check the kubernetes resources for more info.  
+Note: 'Deployment' is still a beta feature at the time I am testing this. You may get an error. You may need to change the API version within the yaml file. Check the kubernetes resources http://kubernetes.io/docs/user-guide/deployments/ for more info in case you encounter any trouble.
    
 Check the deployment:   
 ````
@@ -281,7 +283,7 @@ http://external_ip_address_of_service/dump1090
 Used docker container images:
 https://hub.docker.com/r/tedsluis/dump1090-mutability/  (version v1.15_heatmaprangeview and v1.15)   
 Github sources:   
-https://github.com/tedsluis/docker-dump1090
+https://github.com/tedsluis/docker-dump1090   
 https://github.com/tedsluis/dump1090   
 https://github.com/mutability/dump1090   
   

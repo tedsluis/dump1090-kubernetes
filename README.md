@@ -73,6 +73,7 @@ List details pod:
 kubectl describe pods   
 ````
 [![kubectl describe pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_pods1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_pods1.png)   
+The pod is running!   
    
 ### Create service with external IP address for dump1090   
    
@@ -102,6 +103,7 @@ After a minute:
 kubectl get services
 ````
 [![Get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services3.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services3.png)
+Do you see external IP address for dump1090? Use that in your internet browser!    
    
 Show details services:   
 ````
@@ -121,36 +123,80 @@ Note: Everyone on the internet can use this dump1090 now!
    
 ### Delete the pod 
    
+For the next example we first have to delete this our pod:   
 ````
 kubectl delete pods dump1090
 ````
+[![kubectl delete pods dump1090](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/delete_pod1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/delete_pod1.png)   
 note: We leave the service with the external IP address as it is for the next examples.   
+   
+List pods:   
+````
+kubectl get pods
+````
+[![get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods3.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods3.png)   
    
 ### Create replication controller   
    
+Create a replication controller that exists of 3 pods:   
 ````
 kubectl create -f dump1090-replication-controller.yaml
 ````
+[![kubectl create -f dump1090-replication-controller.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_rc1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_rc1.png)   
    
+List the pods:   
+````
+kubectl get pods
+````
+[![get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods4.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods4.png)   
+   
+Scale up the replication controller to 5 dump1090 instances:
 ````
 kubectl scale --replicas=5 rc dump1090
 ````
-    
+[![kubectl scale --replicas=5 rc dump1090](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/scale_rc1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/scale_rc1.png)   
+You can scale down the number of pods in the same way.  
+   
+Get the replication controller:   
+````
+kubectl get rc
+````
+[![kubectl get rc](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_rc1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_rc1.png)   
+Are are 5 pods running!   
+   
+Every pod has the dump1090 label:   
 ````
 kubectl get pods --show-labels
 ````
+[![kubectl get pods --show-labels](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods5.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods5.png)  
+
+This 'dump1090' label is used by the load balancer to identify pods. That label was attached to the pods and service in the yaml configuration files.   
+Note that the dump1090 service is still active.  
+All pods are accessable using the external IP address (port 80) dune to the label 'dump1090'.   
+The services balances the load over the pods:   
+````
+kubectl get services
+````
+[![get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services4.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services4.png)   
    
 Check dump1090 in you browser. You may need to refresh you browser a view times!
-
 ````
 http://external_ip_address_of_service/dump1090
 ````
    
 ### Remove the replication controller
    
+Remove the replication controller before you start the next demo example:   
 ````
 kubectl delete rc dump1090
 ````
+[![kubectl delete rc dump1090](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/delete_rc1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/delete_rc1.png)
+   
+The pods are gone:   
+````
+kubectl get pods
+````
+[![get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods6.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods6.png)
    
 ### Deploy dump1090-mutability, version 1   
    

@@ -83,7 +83,8 @@ Check to running services:
 ````
 kubectl get services
 ````
-[![Get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services1.png)
+[![Get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services1.png)   
+Only the Kubernetes cluster service is running. Leave that as is.
    
 Create the service:   
 ````
@@ -196,32 +197,37 @@ The pods are gone:
 ````
 kubectl get pods
 ````
-[![get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods6.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods6.png)
+[![get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods6.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods6.png)  
+All pods are removed, so we are ready for the next demo.   
    
 ### Deploy dump1090-mutability, version 1   
    
 This deployment starts 3 pods with dump1090.
-      
 ````
 kubectl create -f dump1090-deployment-v1.yaml   
 ````
+[![kubectl create -f dump1090-deployment-v1.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_deployment1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_deployment1.png)  
+Note: 'Deployment' is still in beta at the time I am testing this. You may get an error. You may need to change the API version within the yaml file. Check the kubernetes resources for more info.  
    
 Check the deployment:   
-   
 ````
 kubectl get pods   
 ````
-   
+[![kubectl get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods7.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods7.png)
+
+List Deployments:   
 ````
 kubectl get deployments   
 ````
+[![kubectl get deployments](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment1.png)
    
+Show detail Deployment:
 ````
 kubectl describe deployments   
 ````
+[![](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_deployment1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_deployment1.png)
     
 Check dump1090 in your browser. You may need to refresh your browser a view times!
-   
 ````
 http://external_ip_address_of_service/dump1090
 ````
@@ -229,27 +235,24 @@ http://external_ip_address_of_service/dump1090
 ### Rolling update: deploy dump1090-mutability version 2   
   
 This deployment replaces 3 pods with an other version of dump1090.
-    
 ````  
 kubectl apply -f dump1090-deployment-v2.yaml   
 ````
+[![kubectl apply -f dump1090-deployment-v2.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)
    
 Check the deployment:   
-   
 ````
 kubectl get pods   
 ````
+[![kubectl get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods8.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods8.png)   
+The version 2 pods are running and the version 1 pods are terminated!
    
 ````
 kubectl get deployments   
 ````
-   
-````
-kubectl describe deployments   
-````
+[![kubectl get deployments](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment2.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment2.png)
    
 Check dump1090 in your browser. You may need to refresh your browser a view times!   
-   
 ````
 http://external_ip_address_of_service/dump1090   
 ````
@@ -257,27 +260,18 @@ http://external_ip_address_of_service/dump1090
 ### Rolling back to dump1090-mutability version 1   
   
 This deployment replaces 3 pods with version 1 of dump1090.
-    
 ````  
 kubectl apply -f dump1090-deployment-v1.yaml   
 ````
-   
-Check the deployment:   
+[![kubectl apply -f dump1090-deployment-v1.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)
    
 ````
 kubectl get pods   
 ````
-   
-````
-kubectl get deployments   
-````
-   
-````
-kubectl describe deployments   
-````
+[![kubectl get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods9.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods9.png)
+The version 1 pods are running and the version 2 pods are terminated!
    
 Check dump1090 in your browser. You may need to refresh your browser a view times!   
-   
 ````
 http://external_ip_address_of_service/dump1090   
 ````
@@ -287,6 +281,7 @@ http://external_ip_address_of_service/dump1090
 Used docker container images:
 https://hub.docker.com/r/tedsluis/dump1090-mutability/  (version v1.15_heatmaprangeview and v1.15)   
 Github sources:   
+https://github.com/tedsluis/docker-dump1090
 https://github.com/tedsluis/dump1090   
 https://github.com/mutability/dump1090   
   

@@ -33,7 +33,6 @@ You can find the correct settings in your Google Cloud Console (as indicated wit
 ### Download the demo yaml files   
    
 Download the yaml files to your Google Cloud Shell where you can run kubectl.
-    
 ````
 wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-pod.yaml
 wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-replication-controller.yaml
@@ -43,7 +42,6 @@ wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1
 ````
    
 Or clone the repo and move the repo directory:   
-    
 ````
 git clone https://github.com/tedsluis/dump1090-kubernetes.git    
    
@@ -53,28 +51,24 @@ cd dump1090-kubernetes
 ### Create a single pod   
    
 Prove that there are no running pods:   
-   
 ````
 kubectl get pods   
 ````   
 [![Get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods1.png)
    
 Create a single pod with one dump1090 container:   
-   
 ````
 kubectl create -f dump1090-pod.yaml    
 ````
 [![kubectl create -f dump1090-pod.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_pods1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_pods1.png)
    
 List running pods:   
-   
 ````
 kubectl get pods
 ````
 [![Get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods2.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods2.png)
    
 List details pod:   
-   
 ````
 kubectl describe pods   
 ````
@@ -85,19 +79,18 @@ kubectl describe pods
 This services creates a load balancer for the dump1090 web server(s). It also provides a external IP address.
    
 Check to running services:   
-   
 ````
 kubectl get services
 ````
 [![Get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services1.png)
    
+Create the service:   
 ````
 kubectl create -f dump1090-services.yaml   
 ````
 [![kubectl create -f dump1090-services.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services1.png)
    
 Check the service:   
-   
 ````
 kubectl get services
 ````
@@ -105,14 +98,12 @@ kubectl get services
 Note: It will take a minute before you get an external IP address!   
     
 After a minute:
-   
 ````
 kubectl get services
 ````
 [![Get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services3.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services3.png)
    
 Show details services:   
-   
 ````
 kubectl describe services dump1090
 ````
@@ -121,7 +112,6 @@ kubectl describe services dump1090
 ### Try dump1090 in you browser   
    
 Check dump1090 in you browser. You may need to refresh you browser a view times!   
-   
 ````
 http://external_ip_address_of_service/dump1090   
 ````

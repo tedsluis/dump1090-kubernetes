@@ -1,5 +1,6 @@
 # dump1090-kubernetes
-Demo: Run dump1090-mutability on a Kubernetes cluster (in the cloud).  
+Demo: Run one or more dump1090-mutability instances on a Kubernetes cluster (in the cloud).  
+Horizontal scaling in containers makes dump1090 accessable for a large audiences.
     
 * Create a single pod with a dump1090 instance.
 * Create a replication controller with multiple dump1090 instances.
@@ -289,7 +290,7 @@ https://github.com/mutability/dump1090
   
 ### Live view
    
-Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://130.211.186.77/dump1090/gmap.html
+Try my dump1090 fork with heatmap and rangeview in the Google cloud: http://104.197.44.48/dump1090/gmap.html
 (This dump1090 runs on a 60-day free trail that is available until 20 june 2016, more info at https://cloud.google.com/free-trial/)   
    
 Ted Sluis   

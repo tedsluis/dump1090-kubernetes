@@ -1,5 +1,5 @@
 # dump1090-kubernetes
-Demo: Run dump1090-mutability on a Kubernetes cluster.  
+Demo: Run dump1090-mutability on a Kubernetes cluster (in the cloud).  
     
 * Create a single pod with a dump1090 instance.
 * Create a replication controller with multiple dump1090 instances.
@@ -9,13 +9,14 @@ Demo: Run dump1090-mutability on a Kubernetes cluster.
 * Do a rolling update to a new version of dump190.
 * Roll back to a previous version.   
    
-### Prepare Kubernetes cluster   
+### Prepare a Kubernetes cluster   
    
 If you don't like to set up a Kubernetes cluster yourself, you can use a 60 days/$300 free trail on Google Cloud: https://cloud.google.com  
-All you need is 10 minutes to signup, add your credit card details, create a container cluster before you can start.   
-After the free trail period your access to the cluster automaticly ends without any payment.  
-Start with: https://cloud.google.com/container-engine/docs/before-you-begin     
-   
+All you need is less than 5 minutes to signup and add your credit card details before you can start.   
+Note: After the free trail period your access to the cluster automaticly ends without any payment.  
+Start with: https://cloud.google.com/container-engine/docs/before-you-begin or follow this brief instructions:       
+  
+After selecting 'Container Engine', you can create a new 'Container Cluster'. Choose the defaults is just fine.    
 Launch a Google Cloud Shell from your Google Cloud Console (indicated with the green arrow in the picture below).   
 Tell the command-line interface which Google Cloud Platform project to use:   
 ````
@@ -26,12 +27,12 @@ gcloud container clusters get-credentials YOUR_KUBERNETES_CLUSTER_NAME
 gcloud config list
 ````
    
-You can find the correct settings in your Google Cloud Console (indicated with the red arrows in the picture below).   
+You can find the correct settings in your Google Cloud Console (as indicated with the red arrows in the picture below).   
 [![Google Cloud Console](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)
    
-### Download yaml files   
+### Download the demo yaml files   
    
-Download the yaml files to you Google Cloud Shell where you can run kubectl.
+Download the yaml files to your Google Cloud Shell where you can run kubectl.
     
 ````
 wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-pod.yaml
@@ -41,10 +42,11 @@ wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1
 wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-services.yaml   
 ````
    
-Or clone the repo:   
+Or clone the repo and move the repo directory:   
     
 ````
 git clone https://github.com/tedsluis/dump1090-kubernetes.git    
+   
 cd dump1090-kubernetes   
 ````
    

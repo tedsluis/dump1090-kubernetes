@@ -213,19 +213,19 @@ Check the deployment:
 ````
 kubectl get pods   
 ````
-[![kubectl get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods7.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods7.png)
+[![kubectl get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods7.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods7.png)  
 
 List Deployments:   
 ````
 kubectl get deployments   
 ````
-[![kubectl get deployments](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment1.png)
+[![kubectl get deployments](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment1.png)   
    
 Show detail Deployment:
 ````
 kubectl describe deployments   
 ````
-[![](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_deployment1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_deployment1.png)
+[![](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_deployment1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_deployment1.png)   
     
 Check dump1090 in your browser. You may need to refresh your browser a view times!
 ````
@@ -238,19 +238,19 @@ This deployment replaces 3 pods with an other version of dump1090.
 ````  
 kubectl apply -f dump1090-deployment-v2.yaml   
 ````
-[![kubectl apply -f dump1090-deployment-v2.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)
+[![kubectl apply -f dump1090-deployment-v2.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)  
    
 Check the deployment:   
 ````
 kubectl get pods   
 ````
 [![kubectl get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods8.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods8.png)   
-The version 2 pods are running and the version 1 pods are terminated!
+The version 2 pods are running and the version 1 pods are terminated!   
    
 ````
 kubectl get deployments   
 ````
-[![kubectl get deployments](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment2.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment2.png)
+[![kubectl get deployments](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment2.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_dyploment2.png)   
    
 Check dump1090 in your browser. You may need to refresh your browser a view times!   
 ````
@@ -263,12 +263,12 @@ This deployment replaces 3 pods with version 1 of dump1090.
 ````  
 kubectl apply -f dump1090-deployment-v1.yaml   
 ````
-[![kubectl apply -f dump1090-deployment-v1.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)
+[![kubectl apply -f dump1090-deployment-v1.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/deployment_apply1.png)   
    
 ````
 kubectl get pods   
 ````
-[![kubectl get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods9.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods9.png)
+[![kubectl get pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods9.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods9.png)   
 The version 1 pods are running and the version 2 pods are terminated!
    
 Check dump1090 in your browser. You may need to refresh your browser a view times!   

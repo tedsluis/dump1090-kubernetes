@@ -10,7 +10,7 @@ Horizontal scaling in containers makes dump1090 accessable for a large audiences
 * Do a rolling update to a new version of dump190.
 * Roll back to a previous version.   
   
-If you are unfamiliar with Kubernetes you can wath this video https://www.youtube.com/watch?v=WwBdNXt6wO4 by Brendan Burns, Software engineer and a founder of Kubernetes at Google.  
+If you are unfamiliar with Kubernetes you can watch this video https://www.youtube.com/watch?v=WwBdNXt6wO4 by Brendan Burns, Software engineer and a founder of Kubernetes at Google.  
 Or read the technical over view: http://kubernetes.io/docs/whatisk8s   
    
 ### Prepare a Kubernetes cluster   

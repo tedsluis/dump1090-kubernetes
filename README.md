@@ -102,7 +102,7 @@ After a minute:
 ````
 kubectl get services
 ````
-[![Get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services3.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services3.png)
+[![Get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services3.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services3.png)   
 Do you see external IP address for dump1090? Use that in your internet browser!    
    
 Show details services:   
@@ -111,9 +111,9 @@ kubectl describe services dump1090
 ````
 [![kubectl describe services dump1090](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_services1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_services1.png)
    
-### Try dump1090 in you browser   
+### Try dump1090 in your browser   
    
-Check dump1090 in you browser. You may need to refresh you browser a view times!   
+Check dump1090 in your browser. You may need to refresh your browser a view times!   
 ````
 http://external_ip_address_of_service/dump1090   
 ````
@@ -179,7 +179,7 @@ kubectl get services
 ````
 [![get services](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services4.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_services4.png)   
    
-Check dump1090 in you browser. You may need to refresh you browser a view times!
+Check dump1090 in your browser. You may need to refresh your browser a view times!
 ````
 http://external_ip_address_of_service/dump1090
 ````
@@ -220,7 +220,7 @@ kubectl get deployments
 kubectl describe deployments   
 ````
     
-Check dump1090 in you browser. You may need to refresh you browser a view times!
+Check dump1090 in your browser. You may need to refresh your browser a view times!
    
 ````
 http://external_ip_address_of_service/dump1090
@@ -248,7 +248,7 @@ kubectl get deployments
 kubectl describe deployments   
 ````
    
-Check dump1090 in you browser. You may need to refresh you browser a view times!   
+Check dump1090 in your browser. You may need to refresh your browser a view times!   
    
 ````
 http://external_ip_address_of_service/dump1090   
@@ -276,7 +276,7 @@ kubectl get deployments
 kubectl describe deployments   
 ````
    
-Check dump1090 in you browser. You may need to refresh you browser a view times!   
+Check dump1090 in your browser. You may need to refresh your browser a view times!   
    
 ````
 http://external_ip_address_of_service/dump1090   

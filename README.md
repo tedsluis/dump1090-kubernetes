@@ -9,14 +9,29 @@ Demo: Run dump1090-mutability on a Kubernetes cluster.
 * Do a rolling update to a new version of dump190.
 * Roll back to a previous version.   
    
-If you don't like to set up a Kubernetes cluster yourself, you can use a free trail on Google Cloud: https://cloud.google.com  
-All you need is 10 minutes to signup, add credit card details, create a container cluster before you can start.   
+### Prepare Kubernetes cluster   
+   
+If you don't like to set up a Kubernetes cluster yourself, you can use a 60 days/$300 free trail on Google Cloud: https://cloud.google.com  
+All you need is 10 minutes to signup, add your credit card details, create a container cluster before you can start.   
 After the free trail period your access to the cluster automaticly ends without any payment.  
-Start with: http://kubernetes.io/docs/getting-started-guides/gce/   
+Start with: https://cloud.google.com/container-engine/docs/before-you-begin     
+   
+Launch a Google Cloud Shell from your Google Cloud Console (indicated with the green arrow in the picture below).   
+Tell the command-line interface which Google Cloud Platform project to use:   
+````
+gcloud config set project YOUR_GOOGLE_CLOUD_PROJECT
+gcloud config set compute/zone YOUR_GOOGLE_COMPUTE_ZONE
+gcloud config set container/cluster YOUR_KUBERNETES_CLUSTER_NAME
+gcloud container clusters get-credentials YOUR_KUBERNETES_CLUSTER_NAME
+gcloud config list
+````
+   
+You can find the correct settings in your Google Cloud Console (indicated with the red arrows in the picture below).   
+[![Google Cloud Console](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)
    
 ### Download yaml files   
    
-Download the yaml files to you Kubernetes cluster management host where you can run kubectl.
+Download the yaml files to you Google Cloud Shell where you can run kubectl.
     
 ````
 wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-pod.yaml
@@ -50,7 +65,7 @@ This services creates a load balancer for the dump1090 web server(s). It also pr
 ````
 kubectl create -f dump1090-services.yaml   
 ````
-note: It will take a minut before you get an external IP address!   
+Note: It will take a minut before you get an external IP address!   
    
 Check the service:   
    
@@ -69,6 +84,7 @@ Check dump1090 in you browser. You may need to refresh you browser a view times!
 ````
 http://external_ip_address_of_service/dump1090   
 ````
+Note: Everyone on the internet can use this dump1090 now!
    
 ### Delete the pod 
    

@@ -30,8 +30,9 @@ gcloud config set container/cluster YOUR_KUBERNETES_CLUSTER_NAME
 gcloud container clusters get-credentials YOUR_KUBERNETES_CLUSTER_NAME
 gcloud config list
 ````
+[![gcloud donfig list](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/gcloud_config1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/gcloud_config1.png)
    
-You can find the correct settings in your Google Cloud Console (as indicated with the red arrows in the picture below).   
+You can find the correct settings in your own Google Cloud Console (as indicated with the red arrows in the picture below).   
 [![Google Cloud Console](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)
    
 ### Download the demo yaml files   

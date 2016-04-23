@@ -1,6 +1,6 @@
 # dump1090-kubernetes
 Demo: Run one or more dump1090-mutability instances on a Kubernetes cluster (in the cloud).  
-Horizontal scaling in containers makes dump1090 accessable for a large audiences.
+Horizontal scaling in Docker containers behind a load balancer makes dump1090 accessable for a large audiences. 
     
 * Create a single pod with a dump1090 instance.
 * Create a replication controller with multiple dump1090 instances.

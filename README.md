@@ -21,7 +21,7 @@ Note: After the free trail period your access to the cluster automaticly ends wi
 Start with: https://cloud.google.com/container-engine/docs/before-you-begin or follow this brief instructions:       
   
 After selecting 'Container Engine', you can create a new 'Container Cluster'. Choose the defaults is just fine.    
-Launch a Google Cloud Shell from your Google Cloud Console (indicated with the green arrow in the picture below).   
+Launch a Google Cloud Shell from your Google Cloud Console (indicated with the green arrow in the Google Cloud Console screenshot below).   
 Tell the command-line interface which Google Cloud Platform project to use:   
 ````
 gcloud config set project YOUR_GOOGLE_CLOUD_PROJECT
@@ -125,7 +125,8 @@ You may need to refresh your browser a view times!
 http://external_ip_address_of_service/dump1090   
 ````
 Note: Everyone on the internet can use this dump1090 now!
-   
+  
+You can try my setup: http://104.197.44.48/dump1090/gmap.html    
 [![dump1090](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/browser.png)](http://104.197.44.48/dump1090/gmap.html)
    
 ### Delete the pod 

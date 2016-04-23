@@ -24,6 +24,8 @@ After selecting 'Container Engine', you can create a new 'Container Cluster'. Ch
 Launch a Google Cloud Shell from your Google Cloud Console (indicated with the green arrow in the Google Cloud Console screenshot below).   
 [![Google Cloud Console](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)   
    
+To perform this demo I did use the Google Cloud Shell to enter the cli commands.  Google Cloud Shell is a Debian based OS with a 5GB home directory and all the necessary tools (like gcloud, kubectl, docker, git, etc) already installed.   
+   
 Tell the command-line interface which Google Cloud Platform project to use:   
 ````
 gcloud config set project YOUR_GOOGLE_CLOUD_PROJECT

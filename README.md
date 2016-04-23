@@ -18,10 +18,12 @@ Or read the technical over view: http://kubernetes.io/docs/whatisk8s
 If you don't like to set up a Kubernetes cluster yourself, you can use a 60 days/$300 free trail on Google Cloud: https://cloud.google.com  
 All you need is less than 5 minutes to signup and add your credit card details before you can start.   
 Note: After the free trail period your access to the cluster automaticly ends without any payment.  
-Start with: https://cloud.google.com/container-engine/docs/before-you-begin or follow this brief instructions:       
+Start with: https://cloud.google.com/container-engine/docs/before-you-begin or follow these brief instructions:       
   
 After selecting 'Container Engine', you can create a new 'Container Cluster'. Choose the defaults is just fine.    
 Launch a Google Cloud Shell from your Google Cloud Console (indicated with the green arrow in the Google Cloud Console screenshot below).   
+[![Google Cloud Console](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)   
+   
 Tell the command-line interface which Google Cloud Platform project to use:   
 ````
 gcloud config set project YOUR_GOOGLE_CLOUD_PROJECT
@@ -30,10 +32,8 @@ gcloud config set container/cluster YOUR_KUBERNETES_CLUSTER_NAME
 gcloud container clusters get-credentials YOUR_KUBERNETES_CLUSTER_NAME
 gcloud config list
 ````
-[![gcloud donfig list](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/gcloud_config1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/gcloud_config1.png)
-   
-You can find the correct settings in your own Google Cloud Console (as indicated with the red arrows in the picture below).   
-[![Google Cloud Console](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/container_cluster.png)
+[![gcloud donfig list](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/gcloud_config1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/gcloud_config1.png)   
+You can find the correct settings in your own Google Cloud Console (as indicated with the red arrows in the Google Cloud Console screenshot above).
    
 ### Download the demo yaml files   
    

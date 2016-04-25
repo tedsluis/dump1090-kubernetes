@@ -3,8 +3,8 @@ Demo: Run one or more dump1090-mutability instances on a Kubernetes cluster (in 
 Horizontal scaling in Docker containers behind a load balancer makes dump1090 accessable for a large audiences.  
    
 Running a dump1090 in a Kubernetes cluster makes it possible to do:   
-* rolling updates of new versions of dump1090.   
-* roll back to a previous version.   
+* rolling updates of new versions of dump1090 without down time.
+* roll back to a previous version instantly.
 * improve availability.   
 * scale up and down the number of dump1090 instances depending on the number of load.   
    

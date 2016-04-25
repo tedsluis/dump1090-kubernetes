@@ -8,7 +8,7 @@ Running a dump1090 in a Kubernetes cluster makes it possible to do:
 * improve availability.   
 * scale up and down the number of dump1090 instances depending on the number of load.   
    
-### Demo contents
+### Demo contens
     
 * Create a single pod with a dump1090 instance.
 * Create a replication controller with multiple dump1090 instances.
@@ -25,7 +25,7 @@ Or read the technical over view: http://kubernetes.io/docs/whatisk8s
    
 If you don't like to set up a Kubernetes cluster yourself, you can use a 60 days/$300 free trail on Google Cloud: https://cloud.google.com  
 All you need is less than 5 minutes to signup and add your credit card details before you can start.   
-Note: After the free trail period your access to the cluster automaticly ends without any payment.  
+Note: After the free trail period your access to the cluster automatically ends without any payment.  
 Start with: https://cloud.google.com/container-engine/docs/before-you-begin or follow these brief instructions:       
   
 After selecting 'Container Engine', you can create a new 'Container Cluster'. Choose the defaults is just fine.    
@@ -56,16 +56,18 @@ wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1
 wget https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/dump1090-services.yaml   
 ````
    
-Or clone the repo and move the repo directory:   
+Or clone the repo and move to the repo directory:   
 ````
 git clone https://github.com/tedsluis/dump1090-kubernetes.git    
    
 cd dump1090-kubernetes   
 ````
    
-### Create a single pod   
+### Create a single Pod   
    
-Proof that there are no running pods:   
+A Pod is tha basis scheduling unit within Kubernetes: One or more Docker containers that run on the same Kubernetes node that share resources. http://kubernetes.io/docs/user-guide/pods   
+   
+Proof that there are no running pods at the start of this demo:   
 ````
 kubectl get pods   
 ````   
@@ -90,8 +92,10 @@ kubectl describe pods
 [![kubectl describe pods](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_pods1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/describe_pods1.png)   
 The pod is running!   
    
-### Create service with external IP address for dump1090   
+### Create a service with external IP address for dump1090   
    
+Kubernetes provides service discovery and deals with routing by assigning a stable IP address and DNS name. It provides round-robin load balancing of network connections to the pods matching the selector (even as failures cause the pods move to another Kubernetes node). A service is exposed inside a cluster, but a service can also be exposed outside a cluster. http://kubernetes.io/docs/user-guide/services   
+
 This services creates a load balancer for the dump1090 web server(s). It also provides a external IP address.
    
 Check to running services:   
@@ -157,13 +161,15 @@ Our pod has been terminated.
    
 ### Create replication controller   
    
-Create a replication controller that exists of 3 pods:   
+A replication controller is a set of Pods that perform the same function. A replication controller provides scaling (by changing the number of Pods) and availability since the replication controller always replaces a Pod when one fails. http://kubernetes.io/docs/user-guide/replication-controller   
+   
+Create a replication controller that exists of 3 Pods:   
 ````
 kubectl create -f dump1090-replication-controller.yaml
 ````
 [![kubectl create -f dump1090-replication-controller.yaml](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_rc1.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/create_rc1.png)   
    
-List the pods:   
+List the Pods:   
 ````
 kubectl get pods
 ````
@@ -188,7 +194,9 @@ Every pod has the dump1090 label:
 kubectl get pods --selector=name=dump1090
 ````
 [![kubectl get pods --show-labels](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods5.png)](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/get_pods5.png)  
-
+    
+Kubernetes uses labels and selectors to group resources. http://kubernetes.io/docs/user-guide/labels   
+   
 This 'dump1090' label is used by the load balancer to identify the dump1090 pods. That label was attached to the pods and service in the yaml configuration files.   
 Note that the 'dump1090' service is still active.  
 All pods are accessable using the external IP address (port 80) dune to the label 'dump1090'.   
@@ -220,6 +228,8 @@ All pods are removed, so we are ready for the next demo.
    
 ### Deploy dump1090-mutability, version 1   
    
+Deployment describes the desired state of Pods and replication sets in Kubernetes. Typical use cases are rolling updates and down grades. http://kubernetes.io/docs/user-guide/deployments   
+    
 This deployment starts 3 pods with dump1090.
 ````
 kubectl create -f dump1090-deployment-v1.yaml   

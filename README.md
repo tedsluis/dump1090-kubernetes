@@ -8,7 +8,7 @@ Running a dump1090 in a Kubernetes cluster makes it possible to do:
 * improve availability.   
 * scale up and down the number of dump1090 instances depending on the number of load.   
    
-### Demo contens
+### Demo content
     
 * Create a single pod with a dump1090 instance.
 * Create a replication controller with multiple dump1090 instances.

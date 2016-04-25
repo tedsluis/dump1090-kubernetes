@@ -65,7 +65,7 @@ cd dump1090-kubernetes
    
 ### Create a single Pod   
    
-A Pod is tha basis scheduling unit within Kubernetes: One or more Docker containers that run on the same Kubernetes node that share resources. http://kubernetes.io/docs/user-guide/pods   
+A Pod is the basis scheduling unit within Kubernetes: One or more Docker containers that run on the same Kubernetes node that share resources. http://kubernetes.io/docs/user-guide/pods   
    
 Proof that there are no running pods at the start of this demo:   
 ````
@@ -303,6 +303,8 @@ Check dump1090 in your browser. You may need to refresh your browser a view time
 ````
 http://external_ip_address_of_service/dump1090   
 ````
+   
+You have seen how easy it is to host a scaled dump1090 application in a Kubernetes cluster.  
    
 ### sources 
    

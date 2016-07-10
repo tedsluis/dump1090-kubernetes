@@ -140,8 +140,8 @@ http://external_ip_address_of_service/dump1090
 ````
 Note: Everyone on the internet can use this dump1090 now!
   
-You can try my setup: http://104.197.44.48/dump1090/gmap.html    
-[![dump1090](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/browser.png)](http://104.197.44.48/dump1090/gmap.html)
+You can try my setup: http://104.197.175.34/dump1090/gmap.html    
+[![dump1090](https://raw.githubusercontent.com/tedsluis/dump1090-kubernetes/master/pics/browser.png)](http://104.197.175.34/dump1090/gmap.html)
    
 ### Delete the pod 
    
